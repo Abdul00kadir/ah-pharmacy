@@ -5,6 +5,8 @@ export default function EnquiryPage() {
       <p className="mt-2 text-gray-600">
         Fill the form and we will contact you.
       </p>
+
+      {/* Form yahin aayega */}
     </div>
   );
 }

@@ -3,8 +3,10 @@ export default function BlogPage() {
     <div className="p-10">
       <h1 className="text-3xl font-bold">Blog</h1>
       <p className="mt-2 text-gray-600">
-        Health tips & updates
+        Health tips & articles
       </p>
+
+      {/* Blog cards yahin aayenge */}
     </div>
   );
 }

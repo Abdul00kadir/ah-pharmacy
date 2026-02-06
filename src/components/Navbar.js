@@ -115,7 +115,7 @@ export default function Example() {
           </Popover>
 
           <a href="#" className="text-sm/6 font-semibold text-gray-900 dark:text-white">
-            Features
+            Blog
           </a>
           <a href="#" className="text-sm/6 font-semibold text-gray-900 dark:text-white">
             Marketplace
