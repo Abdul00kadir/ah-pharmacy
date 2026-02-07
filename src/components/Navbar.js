@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import Link from 'next/link'
 import {
   Dialog,
   DialogPanel,
@@ -24,11 +25,11 @@ import {
 import { ChevronDownIcon, PhoneIcon, PlayCircleIcon } from '@heroicons/react/20/solid'
 
 const products = [
-  { name: 'Tablets', description: 'Get a better understanding of your traffic', href: '#', icon: ChartPieIcon },
-  { name: 'Majoon', description: 'Speak directly to your customers', href: '#', icon: CursorArrowRaysIcon },
-  { name: 'Capsules', description: 'Your customers’ data will be safe and secure', href: '#', icon: FingerPrintIcon },
-  { name: 'Combos', description: 'Connect with third-party tools', href: '#', icon: SquaresPlusIcon },
-  { name: 'For Pain', description: 'Build strategic funnels that will convert', href: '#', icon: ArrowPathIcon },
+  { name: 'Tablets', description: 'Get a better understanding of your traffic', href: '/products/Tablets', icon: ChartPieIcon },
+  { name: 'Majoon', description: 'Speak directly to your customers', href: '/products/Majoon', icon: CursorArrowRaysIcon },
+  { name: 'Capsules', description: 'Your customers’ data will be safe and secure', href: '/products/Capsules', icon: FingerPrintIcon },
+  { name: 'Combos', description: 'Connect with third-party tools', href: '/products/Combos', icon: SquaresPlusIcon },
+  { name: 'For Pain', description: 'Build strategic funnels that will convert', href: '/products/ForPain', icon: ArrowPathIcon },
 ]
 const callsToAction = [
   // { name: 'Watch demo', href: '#', icon: PlayCircleIcon },
@@ -40,21 +41,27 @@ export default function Example() {
 
   return (
     <header className="bg-white dark:bg-gray-900">
-      <nav aria-label="Global" className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8">
+      <nav aria-label="Global" className="mx-auto flex max-w-7xl items-center justify-between p-1  lg:px-8">
         <div className="flex lg:flex-1">
-          <a href="#" className="-m-1.5 p-1.5">
+          <Link href="/" className="-m-1.5 p-1.5">
             <span className="sr-only">Your Company</span>
             <img
               alt=""
-              src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=600"
-              className="h-8 w-auto dark:hidden"
+              src="/logo/MOB-logo.png"
+              className="h-15 w-auto px-3 md:hidden"
             />
             <img
               alt=""
-              src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=500"
-              className="h-8 w-auto not-dark:hidden"
+              src="/logo/Desk-logo (2).png"
+              className="h-15 w-auto hidden md:block dark:hidden"
             />
-          </a>
+            <img
+              alt=""
+              src="/logo/Desk-logo (1).png"
+              className="h-15 w-auto hidden md:dark:block"
+            />
+            
+          </Link>
         </div>
         <div className="flex lg:hidden">
           <button
@@ -90,10 +97,10 @@ export default function Example() {
                       />
                     </div>
                     <div className="flex-auto">
-                      <a href={item.href} className="block font-semibold text-gray-900 dark:text-white">
+                      <Link href={item.href} className="block font-semibold text-gray-900 dark:text-white">
                         {item.name}
                         <span className="absolute inset-0" />
-                      </a>
+                      </Link>
                       <p className="mt-1 text-gray-600 dark:text-gray-400">{item.description}</p>
                     </div>
                   </div>
@@ -101,52 +108,52 @@ export default function Example() {
               </div>
               <div className="grid grid-cols-2 divide-x divide-gray-900/5 bg-gray-50 dark:divide-white/10 dark:bg-gray-700/50">
                 {callsToAction.map((item) => (
-                  <a
+                  <Link
                     key={item.name}
                     href={item.href}
                     className="flex items-center justify-center gap-x-2.5 p-3 text-sm/6 font-semibold text-gray-900 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700/50"
                   >
                     <item.icon aria-hidden="true" className="size-5 flex-none text-gray-400 dark:text-gray-500" />
                     {item.name}
-                  </a>
+                  </Link>
                 ))}
               </div>
             </PopoverPanel>
           </Popover>
 
-          <a href="#" className="text-sm/6 font-semibold text-gray-900 dark:text-white">
+          <Link href="/offer" className="text-sm/6 font-semibold text-gray-900 dark:text-white">
+            Offers
+          </Link>
+          <Link href="/blog" className="text-sm/6 font-semibold text-gray-900 dark:text-white">
             Blog
-          </a>
-          <a href="#" className="text-sm/6 font-semibold text-gray-900 dark:text-white">
-            Marketplace
-          </a>
-          <a href="#" className="text-sm/6 font-semibold text-gray-900 dark:text-white">
-            Company
-          </a>
+          </Link>
+          <Link href="/about" className="text-sm/6 font-semibold text-gray-900 dark:text-white">
+            About Us
+          </Link>
         </PopoverGroup>
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-          <a href="#" className="text-sm/6 font-semibold text-gray-900 dark:text-white">
+          <Link href="/enquiry" className="text-sm/6 font-semibold text-gray-900 dark:text-white">
             Enquiry Now <span aria-hidden="true">&rarr;</span>
-          </a>
+          </Link>
         </div>
       </nav>
       <Dialog open={mobileMenuOpen} onClose={setMobileMenuOpen} className="lg:hidden">
         <div className="fixed inset-0 z-50" />
         <DialogPanel className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white p-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10 dark:bg-gray-900 dark:sm:ring-gray-100/10">
           <div className="flex items-center justify-between">
-            <a href="#" className="-m-1.5 p-1.5">
+            <Link href="/" className="-m-1.5 p-1.5">
               <span className="sr-only">Your Company</span>
               <img
                 alt=""
-                src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=600"
-                className="h-8 w-auto dark:hidden"
+                src="/logo/Desk-logo (1).png"
+                className="h-8 w-auto dark:hidden "
               />
               <img
                 alt=""
-                src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=500"
+                src="/logo/Desk-logo (2).png"
                 className="h-8 w-auto not-dark:hidden"
               />
-            </a>
+            </Link>
             <button
               type="button"
               onClick={() => setMobileMenuOpen(false)}
@@ -177,32 +184,32 @@ export default function Example() {
                     ))}
                   </DisclosurePanel>
                 </Disclosure>
-                <a
-                  href="#"
+                <Link
+                  href="/offer"
                   className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50 dark:text-white dark:hover:bg-white/5"
                 >
-                  Features
-                </a>
-                <a
-                  href="#"
+                  Offers
+                </Link>
+                <Link
+                  href="/blog"
                   className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50 dark:text-white dark:hover:bg-white/5"
                 >
-                  Marketplace
-                </a>
-                <a
-                  href="#"
+                  Blog
+                </Link>
+                <Link
+                  href="/about"
                   className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50 dark:text-white dark:hover:bg-white/5"
                 >
-                  Company
-                </a>
+                  About Us
+                </Link>
               </div>
               <div className="py-6">
-                <a
-                  href="#"
+                <Link
+                  href="/enquiry"
                   className="-mx-3 block rounded-lg px-3 py-2.5 text-base/7 font-semibold text-gray-900 hover:bg-gray-50 dark:text-white dark:hover:bg-white/5"
                 >
                   Enquiry Now
-                </a>
+                </Link>
               </div>
             </div>
           </div>
