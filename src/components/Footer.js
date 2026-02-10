@@ -1,8 +1,9 @@
 import Link from "next/link";
+import Social from "./Social";
 
 export default function Footer() {
   return (
-    <footer className="bg-base-200 text-base-content border-t border-base-300 overflow-y-hidden">
+<footer className="bg-base-200 text-base-content border-t border-base-300 w-full">
       <div className="footer max-w-7xl mx-auto px-10 py-10 pt-3 sm:footer-horizontal  ">
         
         {/* Logo + About */}
@@ -89,7 +90,17 @@ export default function Footer() {
             Privacy Policy
           </Link>
         </nav>
+        <div className="hidden md:block">
+          <Social />
+          <p className="text-sm text-base-content text-center cursor-pointer">ahpharmacy@gmail.com</p>
         </div>
+        </div>
+        <div className="block md:hidden t-0">
+          <Social />
+          <p className="text-sm text-base-content text-center cursor-pointer">
+            ahpharmacy@gmail.com
+          </p>
+      </div>
       </div>
 
       {/* Bottom bar */}
