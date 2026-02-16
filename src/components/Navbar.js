@@ -49,17 +49,17 @@ export default function Example() {
             <span className="sr-only">Your Company</span>
             <img
               alt=""
-              src="/logo/MOB-logo.png"
+              src="/logo/logo_desk.png"
               className="h-15 w-auto px-3 md:hidden"
             />
             <img
               alt=""
-              src="/logo/Desk-logo (2).png"
+              src="/logo/logo_desk.png"
               className="h-15 w-auto hidden md:block dark:hidden"
             />
             <img
               alt=""
-              src="/logo/Desk-logo (1).png"
+              src="/logo/logo_desk.png"
               className="h-15 w-auto hidden md:dark:block"
             />
             
@@ -72,7 +72,7 @@ export default function Example() {
             className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700 dark:text-gray-400"
           >
             <span className="sr-only">Open main menu</span>
-            <Bars3Icon aria-hidden="true" className="size-6" />
+            <Bars3Icon aria-hidden="true" className="size-10" />
           </button>
         </div>
         <PopoverGroup className="hidden lg:flex lg:gap-x-12">
@@ -147,12 +147,12 @@ export default function Example() {
               <span className="sr-only">Your Company</span>
               <img
                 alt=""
-                src="/logo/Desk-logo (1).png"
+                src="/logo/logo.png"
                 className="h-8 w-auto dark:hidden "
               />
               <img
                 alt=""
-                src="/logo/Desk-logo (2).png"
+                src="/logo/logo.png"
                 className="h-8 w-auto not-dark:hidden"
               />
             </Link>

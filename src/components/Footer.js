@@ -12,12 +12,12 @@ export default function Footer() {
             <Link href="/">
               <img
               alt=""
-              src="/logo/Desk-logo (2).png"
+              src="/logo/logo_desk.png"
               className="h-15 w-auto dark:hidden"
             />
             <img
               alt=""
-              src="/logo/Desk-logo (1).png"
+              src="/logo/logo_desk.png"
               className="h-15 w-auto hidden dark:block"
             />
             </Link>
@@ -37,12 +37,12 @@ export default function Footer() {
             <Link href="/">
               <img
               alt=""
-              src="/logo/Desk-logo (2).png"
+              src="/logo/logo.png"
               className="h-15 w-auto dark:hidden"
             />
             <img
               alt=""
-              src="/logo/Desk-logo (1).png"
+              src="/logo/logo_desk.png"
               className="h-15 w-auto hidden dark:block"
             />
             </Link>

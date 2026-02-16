@@ -69,7 +69,6 @@ export default async function Home() {
   </div>
   <div>
 
-    
      <div className="flex gap-0 bg-gray-100 md:gap-15 md:justify-center overflow-x-auto dark:bg-gray-800 px-4 py-6 scrollbar-hide scrollbar-thin scrollbar-thumb-gray-500 dark:scrollbar-thumb-gray-700">
   {quality.map((cat) => (
     <div
@@ -95,16 +94,44 @@ export default async function Home() {
   ))}
 </div>
   </div>
-
-
-
-
-
-
-
-
-
      </div>
+      <section className="px-4 py-10 md:px-8">
+        <div className="mx-auto max-w-6xl">
+          <h2 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white text-center mb-8">
+            Features
+          </h2>
+
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+            <div className="overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm dark:border-white/10 dark:bg-gray-900">
+              <Image
+                src="/fess/feutures.png"
+                alt="Product features"
+                width={1200}
+                height={800}
+                className="h-full w-full object-cover"
+                priority={false}
+              />
+            </div>
+
+            <div className="overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm dark:border-white/10 dark:bg-gray-900">
+              <video
+                src="/fess/feutures.mp4"
+                className="h-full w-full object-cover"
+                
+                autoPlay
+                muted
+                loop
+                playsInline
+                preload="metadata"
+                poster="/fess/feutures.png"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+
     </>
   );
 }
