@@ -59,7 +59,7 @@ export default async function Home() {
 
   <div className="py-10 text-center flex justify-center items-center text-gray-500 dark:text-gray-400">
     <div className="max-w-2xl mx-auto px-4">
-      <h2 className="text-2xl font-bold text-gray-900 dark:text-white shadow-2xl md:bg-gray-100 rounded-2xl p-1">
+      <h2 className="text-2xl font-bold text-gray-900 dark:text-white shadow-2xl dark:bg-gray-600 md:bg-gray-100 rounded-2xl p-1">
         Finest Natural Remedies, Delivered to Your Doorstep
       </h2>
       <p className="mt-4 text-gray-600 dark:text-gray-400">
@@ -111,23 +111,4 @@ export default async function Home() {
 
 
 
-// <div className="flex gap-6 overflow-x-auto px-4 py-6 scrollbar-hide">
-//   {items.map((item) => (
-//     <div
-//       key={item.title}
-//       className="flex-shrink-0 w-[120px] text-center"
-//     >
-//       <div className="mx-auto w-24 h-32 rounded-full overflow-hidden bg-gray-200">
-//         <img
-//           src={item.image}
-//           alt={item.title}
-//           className="w-full h-full object-cover"
-//         />
-//       </div>
 
-//       <p className="mt-3 text-sm font-medium">
-//         {item.title}
-//       </p>
-//     </div>
-//   ))}
-// </div>

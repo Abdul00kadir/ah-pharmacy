@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 
 const AUTO_TIME = 15000;
 const slides = [
-  { image: "/hero/hero1.jpg" },
+  { image: "/hero/hero1.png" },
   { image: "/hero/hero2.png" },
   { image: "/hero/hero3.png" },
 ];
