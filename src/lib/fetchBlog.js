@@ -52,7 +52,6 @@ export async function fetchBlogs() {
 
     const res = await fetch(endpoint, {
       cache: "no-store",
-      next: { revalidate: 0 },
     });
 
     if (!res.ok) {

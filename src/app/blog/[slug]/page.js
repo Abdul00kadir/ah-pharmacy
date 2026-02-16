@@ -2,6 +2,8 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { fetchBlogs } from "@/lib/fetchBlog";
 
+export const dynamic = "force-dynamic";
+
 function normalizeSlug(value = "") {
   return decodeURIComponent(value.toString()).trim().toLowerCase();
 }

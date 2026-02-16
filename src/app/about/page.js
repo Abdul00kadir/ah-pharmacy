@@ -20,7 +20,7 @@ export default function Example() {
                     <div className="w-24 h-[3px] rounded-full bg-gradient-to-r from-indigo-600 to-[#DDD9FF]"></div>
                     <p className="mt-8">PrebuiltUI helps you build faster by transforming your design vision into fully functional,
                         production-ready UI components. </p>
-                    <p className="mt-4">Whether you're launching a SaaS app, landing page, or dashboard, our collection of Tailwind
+                    <p className="mt-4">Whether you&apos;re launching a SaaS app, landing page, or dashboard, our collection of Tailwind
                         CSS components is crafted to boost your development speed and improve user experience.</p>
                     <p className="mt-4">From UI design systems to automation-ready layouts, PrebuiltUI empowers you to build
                         beautifully and scale effortlessly.</p>
@@ -33,7 +33,7 @@ export default function Example() {
                     <div className="w-24 h-[3px] rounded-full bg-gradient-to-r from-indigo-600 to-[#DDD9FF]"></div>
                     <p className="mt-8">PrebuiltUI helps you build faster by transforming your design vision into fully functional,
                         production-ready UI components. </p>
-                    <p className="mt-4">Whether you're launching a SaaS app, landing page, or dashboard, our collection of Tailwind
+                    <p className="mt-4">Whether you&apos;re launching a SaaS app, landing page, or dashboard, our collection of Tailwind
                         CSS components is crafted to boost your development speed and improve user experience.</p>
                     <p className="mt-4">From UI design systems to automation-ready layouts, PrebuiltUI empowers you to build
                         beautifully and scale effortlessly.</p>
@@ -59,7 +59,7 @@ export default function Example() {
                     <div className="w-60 h-[3px] rounded-full bg-gradient-to-r from-indigo-600 to-[#DDD9FF]"></div>
                     <p className="mt-8">PrebuiltUI helps you build faster by transforming your design vision into fully functional,
                         production-ready UI components. </p>
-                    <p className="mt-4">Whether you're launching a SaaS app, landing page, or dashboard, our collection of Tailwind
+                    <p className="mt-4">Whether you&apos;re launching a SaaS app, landing page, or dashboard, our collection of Tailwind
                         CSS components is crafted to boost your development speed and improve user experience.</p>
                     <p className="mt-4">From UI design systems to automation-ready layouts, PrebuiltUI empowers you to build
                         beautifully and scale effortlessly.</p>

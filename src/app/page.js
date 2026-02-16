@@ -3,6 +3,9 @@ import HeroSlider from "@/components/HeroCarousel";
 import FeaturedProducts from "@/components/FeaturedProducts";
 import { fetchProducts } from "@/lib/fetchProduct";
 import Combo from "@/components/Combo";
+
+export const dynamic = "force-dynamic";
+
 export default async function Home() {
   const products = await fetchProducts(); 
   const tretmentCategories = [

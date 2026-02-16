@@ -4,7 +4,6 @@ export async function fetchProducts() {
       "https://opensheet.elk.sh/1tU2kRyuhsVY_p3-HlLY7MzHGYZQx_7Mke07UXDEwW3c/Products",
       {
         cache: "no-store",
-        next: { revalidate: 0 },
       }
     );
 

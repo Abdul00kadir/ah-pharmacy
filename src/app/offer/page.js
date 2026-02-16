@@ -1,6 +1,8 @@
 import Offer from "@/components/Offer";
 import { fetchProducts } from "@/lib/fetchProduct";
 
+export const dynamic = "force-dynamic";
+
 export default async function OffersPage() {
   const products = await fetchProducts();
 
