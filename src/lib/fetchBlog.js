@@ -34,13 +34,27 @@ function normalizeRow(row) {
   return cleaned;
 }
 
+const DEFAULT_BLOG_SHEET_URL =
+  "https://opensheet.elk.sh/1tU2kRyuhsVY_p3-HlLY7MzHGYZQx_7Mke07UXDEwW3c/Blog";
+
+function readEnv(key) {
+  const raw = process.env[key];
+  if (!raw) return "";
+
+  return raw
+    .toString()
+    .trim()
+    .replace(/^["']/, "")
+    .replace(/["']$/, "");
+}
+
 function buildEndpoint() {
-  const directUrl = process.env.BLOG_SHEET_URL;
+  const directUrl = readEnv("BLOG_SHEET_URL");
   if (directUrl) return directUrl;
 
-  const sheetId = process.env.BLOG_SHEET_ID;
-  const sheetTab = process.env.BLOG_SHEET_TAB || "Blog";
-  if (!sheetId) return null;
+  const sheetId = readEnv("BLOG_SHEET_ID");
+  const sheetTab = readEnv("BLOG_SHEET_TAB") || "Blog";
+  if (!sheetId) return DEFAULT_BLOG_SHEET_URL;
 
   return `https://opensheet.elk.sh/${sheetId}/${encodeURIComponent(sheetTab)}`;
 }
