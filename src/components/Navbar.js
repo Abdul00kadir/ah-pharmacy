@@ -84,7 +84,7 @@ export default function Example() {
 
             <PopoverPanel
               transition
-              className="absolute left-1/2 z-10 mt-3 w-screen max-w-md -translate-x-1/2 overflow-hidden rounded-3xl bg-white shadow-lg outline-1 outline-main/5 transition data-closed:translate-y-1 data-closed:opacity-0 data-enter:duration-200 data-enter:ease-out data-leave:duration-150 data-leave:ease-in dark:bg-gray-800 dark:shadow-none dark:-outline-offset-1 dark:outline-white/10"
+              className="absolute left-1/2 z-10 mt-3 w-screen max-w-md -translate-x-1/2 overflow-hidden rounded-3xl bg-white shadow-lg outline-1 outline-main/5 transition data-closed:translate-y-1 data-closed:opacity-0 data-enter:duration-200 data-enter:ease-out data-leave:duration-150 data-leave:ease-in dark:bg-gray-900 dark:shadow-none dark:-outline-offset-1 dark:outline-white/10"
             >
               <div className="p-4">
                 {products.map((item) => (
@@ -141,7 +141,7 @@ export default function Example() {
       </nav>
       <Dialog open={mobileMenuOpen} onClose={setMobileMenuOpen} className="lg:hidden">
         <div className="fixed inset-0 z-50" />
-        <DialogPanel className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white p-6 sm:max-w-sm sm:ring-1 sm:ring-main/10 dark:bg-main dark:sm:ring-gray-100/10">
+        <DialogPanel className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white p-6 sm:max-w-sm sm:ring-1 sm:ring-main/10 dark:bg-gray-900 dark:sm:ring-gray-100/10">
           <div className="flex items-center justify-between">
             <Link href="/" className="-m-1.5 p-1.5">
               <span className="sr-only">Your Company</span>
@@ -208,7 +208,7 @@ export default function Example() {
               <div className="py-6">
                 <Link
                   href="/enquiry"
-                  className="-mx-3 block rounded-lg px-3 py-2.5 text-base/7 font-semibold text-main hover:bg-gray-50 dark:text-white dark:hover:bg-white/5  border border-main px-3 py-2 rounded-lg hover:bg-main  transform transition duration-300 ease-in-out"
+                  className="-mx-3 block rounded-lg px-3 py-2.5 text-base/7 font-semibold text-main hover:bg-gray-50 dark:text-white dark:hover:bg-white/5  border border-main px-3 py-2 rounded-lg hover:bg-main transform transition duration-300 ease-in-out"
                 >
                   Enquiry Now
                 </Link>
