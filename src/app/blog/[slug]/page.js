@@ -27,14 +27,14 @@ export default async function BlogDetailPage({ params }) {
     <section className="px-4 py-10 md:px-8">
       <article className="mx-auto max-w-5xl">
         <div className="mb-6 text-sm text-gray-500">
-          <Link href="/blog" className="hover:text-[#255f39]">
+          <Link href="/blog" className="hover:text-[#255f39] dark:text-amber-50">
             Blog
           </Link>
           <span className="mx-2">/</span>
-          <span>{blog.title}</span>
+          <span className="dark:text-amber-50 uppercase">{blog.title}</span>
         </div>
 
-        <h1 className="text-3xl font-bold leading-tight text-gray-900 md:text-5xl">
+        <h1 className="text-3xl font-bold leading-tight text-gray-900 dark:text-amber-50 md:text-5xl">
           {blog.title}
         </h1>
 
@@ -67,7 +67,7 @@ export default async function BlogDetailPage({ params }) {
           </div>
         ) : null}
 
-        <div className="prose mt-8 max-w-none whitespace-pre-line text-gray-700">
+        <div className="prose mt-8 max-w-none whitespace-pre-line text-gray-700 dark:text-amber-50">
           {blog.content || blog.excerpt || "Content coming soon."}
         </div>
       </article>
