@@ -9,7 +9,7 @@ export default async function BlogPage() {
   return (
     <section className="px-4 py-10 md:px-8">
       <div className="mx-auto max-w-7xl">
-        <h1 className="text-3xl font-bold text-gray-900 md:text-4xl">Blog</h1>
+        <h1 className="text-3xl font-bold text-gray-900 md:text-4xl dark:text-gray-100">Blog</h1>
         <p className="mt-2 text-gray-600">Health tips & articles</p>
 
         {blogs.length === 0 ? (
@@ -34,26 +34,26 @@ export default async function BlogPage() {
                   <div className="h-52 w-full bg-gray-100" />
                 )}
 
-                <div className="p-5">
+                <div className="p-5 dark:bg-gray-800">
                   {blog.date ? (
                     <p className="text-xs font-medium tracking-wide text-gray-500">
-                      {blog.date}
+                      {blog.date} 
                     </p>
                   ) : null}
 
                   <Link href={`/blog/${blog.slug}`}>
-                    <h3 className="mt-2 text-xl font-semibold leading-snug text-gray-900 group-hover:text-[#255f39]">
+                    <h3 className="mt-2 text-xl font-semibold leading-snug text-gray-900  dark:text-amber-50">
                       {blog.title}
                     </h3>
                   </Link>
 
-                  <p className="mt-3 line-clamp-3 text-sm text-gray-600">
+                  <p className="mt-3 line-clamp-3 text-sm text-gray-600 dark:text-gray-400">
                     {blog.excerpt || "Read this article for more details."}
                   </p>
 
                   <Link
                     href={`/blog/${blog.slug}`}
-                    className="mt-4 inline-block text-sm font-semibold text-[#255f39]"
+                    className="mt-4 inline-block text-sm font-semibold text-[#255f39] hover:text-[#255f39]/80 dark:text-amber-50"
                   >
                     Read Full Blog
                   </Link>
