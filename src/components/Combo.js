@@ -1,59 +1,71 @@
 "use client";
 
+import { motion } from "framer-motion";
 import Link from "next/link";
+import ProductCard from "./ProductCard";
+import { ArrowRight, Layers } from "lucide-react";
 
-export default function comboProducts({ products }) {
-    const combo = products.filter(p => p.combo === "yes");
+export default function Combo({ products = [] }) {
+  const comboList = products.filter((p) => p.combo === "yes");
 
   return (
-    <section className="py-5 bg-gray-50 dark:bg-gray-900 shadow">
-      <div className="max-w-7xl mx-auto px-5 mb-3">
+    <section className="py-16 sm:py-24 bg-white dark:bg-slate-950 relative overflow-hidden">
+      
+      {/* Background Watermark Typography */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none select-none text-[120px] sm:text-[200px] font-black text-slate-100 dark:text-slate-900/40 uppercase tracking-tighter z-0">
+        SYNERGY
+      </div>
+
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        <div className="flex justify-between products-center mb-8">
-          <h2 className="text-3xl font-bold text-gray-900 dark:text-white">
-            Combo
-          </h2>
-
-         
-        </div>
-
-        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-6">
-          {combo.slice(0, 4).map(product => (
-            <div
-              key={product.id}
-              className="p-3 shadow-2xl md:shadow md:hover:shadow-2xl md:hover:bg-gray-200 dark:shadow-black dark:bg-gray-800 rounded-2xl  overflow-hidden
-         md:transform transition duration-300
-         md:hover:-translate-y-2 md:hover:scale-105"
+        {/* Header */}
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-10 gap-4">
+          <div>
+            <motion.div 
+              initial={{ opacity: 0, x: -10 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-teal-100 dark:bg-teal-950/80 text-teal-800 dark:text-teal-300 text-xs font-bold mb-2 border border-teal-300/40 dark:border-teal-800/50"
             >
-              <img
-                src={product.image}
-                alt={product.name}
-                className="rounded-t-2xl md:h-fit"
-              />
-              <div className="flex flex-col items-center text-center justify-center mt-3 mb-3">
+              <Layers className="w-3.5 h-3.5" />
+              <span>Synergistic Wellness Packs</span>
+            </motion.div>
+            <motion.h2 
+              initial={{ opacity: 0, y: 15 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 }}
+              className="text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900 dark:text-white"
+            >
+              Combo Products
+            </motion.h2>
+            <p className="mt-1 text-sm text-slate-500 dark:text-slate-400 max-w-lg">
+              Specially curated medicine combinations for comprehensive health treatment.
+            </p>
+          </div>
 
-              <h3 className="font-bold text-[18px]  text-gray-800 dark:text-gray-300">
-                {product.name}
-              </h3>
-
-               <p className="text-gray-800 dark:text-gray-200 font-extrabold">
-                ₹{product.price}
-              </p>
-
-              <p className="text-sm text-gray-600 dark:text-gray-500">
-                {product.description}
-              </p>
-</div>
-             
-            </div>
-          ))}
-        </div>
-         <Link
-            href="/products/tablets"
-            className="text-green-600 hover:underline font-medium products-end flex justify-end mt-3"
+          <Link
+            href="/products/Combos"
+            className="group inline-flex items-center gap-2 text-xs font-extrabold uppercase tracking-wider text-emerald-600 dark:text-emerald-400 hover:text-emerald-700 dark:hover:text-emerald-300"
           >
-            View All →
+            <span>View All Combos</span>
+            <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1.5" />
           </Link>
+        </div>
+
+        {/* Grid */}
+        {comboList.length === 0 ? (
+          <div className="rounded-3xl border border-dashed border-slate-300 dark:border-slate-800 p-10 text-center text-slate-500 dark:text-slate-400 text-sm">
+            No combo packages available right now.
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 sm:gap-8">
+            {comboList.slice(0, 4).map((product, idx) => (
+              <ProductCard key={product.id || idx} product={product} />
+            ))}
+          </div>
+        )}
+
       </div>
     </section>
   );

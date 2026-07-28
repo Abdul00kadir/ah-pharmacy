@@ -1,8 +1,8 @@
-'use client'
+'use client';
 
-import { useState } from 'react'
-import Link from 'next/link'
-import Bannar from './Bannar.js'
+import { useState, useEffect } from 'react';
+import Link from 'next/link';
+import ThemeToggle from './ThemeToggle';
 import {
   Dialog,
   DialogPanel,
@@ -13,210 +13,299 @@ import {
   PopoverButton,
   PopoverGroup,
   PopoverPanel,
-} from '@headlessui/react'
+} from '@headlessui/react';
 import {
-  ArrowPathIcon,
   Bars3Icon,
-  ChartPieIcon,
-  CursorArrowRaysIcon,
-  FingerPrintIcon,
-  SquaresPlusIcon,
   XMarkIcon,
-} from '@heroicons/react/24/outline'
-import { ChevronDownIcon, PhoneIcon, PlayCircleIcon } from '@heroicons/react/20/solid'
+  ChevronDownIcon,
+  SparklesIcon,
+  DevicePhoneMobileIcon,
+  EnvelopeIcon,
+  BuildingStorefrontIcon,
+  TagIcon,
+  NewspaperIcon,
+  InformationCircleIcon,
+} from '@heroicons/react/24/outline';
 
-const products = [
-  { name: 'Tablets', description: 'Get a better understanding of your traffic', href: '/products/Tablets', icon: ChartPieIcon },
-  { name: 'Majoon', description: 'Speak directly to your customers', href: '/products/Majoon', icon: CursorArrowRaysIcon },
-  { name: 'Capsules', description: 'Your customers’ data will be safe and secure', href: '/products/Capsules', icon: FingerPrintIcon },
-  { name: 'Combos', description: 'Connect with third-party tools', href: '/products/Combos', icon: SquaresPlusIcon },
-  { name: 'For Pain', description: 'Build strategic funnels that will convert', href: '/products/ForPain', icon: ArrowPathIcon },
-]
-const callsToAction = [
-  // { name: 'Watch demo', href: '#', icon: PlayCircleIcon },
-  { name: 'Contact sales', href: '#', icon: PhoneIcon },
-]
+const categoryProducts = [
+  { 
+    name: 'Tablets', 
+    description: 'Herbal & Unani tablets for everyday wellness', 
+    href: '/products/Tablets',
+    badge: 'Popular'
+  },
+  { 
+    name: 'Majoon', 
+    description: 'Traditional authentic Unani formulations', 
+    href: '/products/Majoon',
+    badge: 'Authentic'
+  },
+  { 
+    name: 'Capsules', 
+    description: 'Concentrated natural care in easy capsules', 
+    href: '/products/Capsules',
+    badge: 'Fast Acting'
+  },
+  { 
+    name: 'Combos', 
+    description: 'Synergistic medicine kits & value packs', 
+    href: '/products/Combos',
+    badge: 'Best Value'
+  },
+  { 
+    name: 'For Pain', 
+    description: 'Targeted relief for joints, muscle & aches', 
+    href: '/products/ForPain',
+    badge: 'Relief'
+  },
+];
 
-export default function Example() {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+export default function Navbar() {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 20) {
+        setScrolled(true);
+      } else {
+        setScrolled(false);
+      }
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   return (
-    <header className="bg-white dark:bg-gray-900 shadow-2xl ">
-      {/* <Bannar /> */}
-      <nav aria-label="Global" className="mx-auto flex max-w-7xl items-center justify-between p-1  lg:px-8">
-        <div className="flex lg:flex-1">
-          <Link href="/" className="-m-1.5 p-1.5">
-            <span className="sr-only">Your Company</span>
-            <img
-              alt=""
-              src="/logo/logo_desk.png"
-              className="h-15 w-auto px-3 md:hidden"
-            />
-            <img
-              alt=""
-              src="/logo/logo_desk.png"
-              className="h-15 w-auto hidden md:block dark:hidden"
-            />
-            <img
-              alt=""
-              src="/logo/logo_desk.png"
-              className="h-15 w-auto hidden md:dark:block"
-            />
-            
+    <header 
+      className={`sticky top-0 z-50 transition-all duration-300 ${
+        scrolled 
+          ? 'bg-white/90 dark:bg-slate-900/90 backdrop-blur-md shadow-lg shadow-slate-900/5 dark:shadow-black/20 border-b border-slate-200/60 dark:border-slate-800/80 py-2.5' 
+          : 'bg-white/70 dark:bg-slate-950/70 backdrop-blur-sm border-b border-slate-100 dark:border-slate-800/40 py-3.5'
+      }`}
+    >
+      <nav aria-label="Global" className="mx-auto flex max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+        
+        {/* Brand Logo */}
+        <div className="flex lg:flex-1 items-center gap-3">
+          <Link href="/" className="-m-1.5 p-1.5 flex items-center gap-3 group focus:outline-none">
+            <div className="relative overflow-hidden rounded-xl bg-emerald-600/10 p-1.5 dark:bg-emerald-400/10 border border-emerald-500/20 group-hover:border-emerald-500/40 transition-colors">
+              <img
+                alt="AH Pharmacy Logo"
+                src="/logo/logo_desk.png"
+                className="h-9 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
+              />
+            </div>
+            <div className="hidden sm:flex flex-col">
+              <span className="text-lg font-bold tracking-tight text-slate-900 dark:text-white leading-none">
+                AH Pharmacy
+              </span>
+              <span className="text-[10px] font-medium tracking-wider uppercase text-emerald-700 dark:text-emerald-400 mt-0.5">
+                Unani & Healthcare
+              </span>
+            </div>
           </Link>
         </div>
-        <div className="flex lg:hidden">
+
+        {/* Mobile controls: Theme Toggle + Hamburger */}
+        <div className="flex items-center gap-2 lg:hidden">
+          <ThemeToggle />
           <button
             type="button"
             onClick={() => setMobileMenuOpen(true)}
-            className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700 dark:text-gray-400"
+            className="-m-2.5 inline-flex items-center justify-center rounded-xl p-2.5 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
           >
             <span className="sr-only">Open main menu</span>
-            <Bars3Icon aria-hidden="true" className="size-10" />
+            <Bars3Icon aria-hidden="true" className="h-7 w-7" />
           </button>
         </div>
-        <PopoverGroup className="hidden lg:flex lg:gap-x-12">
-          <Popover className="relative">
-            <PopoverButton className="flex items-center gap-x-1 text-sm/6 cursor-pointer font-semibold text-main dark:text-white">
-              Product
-              <ChevronDownIcon aria-hidden="true" className="size-5 flex-none text-main dark:text-gray-500" />
-            </PopoverButton>
 
-            <PopoverPanel
-              transition
-              className="absolute left-1/2 z-10 mt-3 w-screen max-w-md -translate-x-1/2 overflow-hidden rounded-3xl bg-white shadow-lg outline-1 outline-main/5 transition data-closed:translate-y-1 data-closed:opacity-0 data-enter:duration-200 data-enter:ease-out data-leave:duration-150 data-leave:ease-in dark:bg-gray-900 dark:shadow-none dark:-outline-offset-1 dark:outline-white/10"
-            >
-              <div className="p-4">
-                {products.map((item) => (
-                  <div
-                    key={item.name}
-                    className="group relative flex items-center gap-x-6 rounded-lg p-4 text-sm/6 hover:bg-gray-50 dark:hover:bg-white/5"
-                  >
-                    <div className="flex size-11 flex-none items-center justify-center rounded-lg bg-gray-50 group-hover:bg-white dark:bg-gray-700/50 dark:group-hover:bg-gray-700">
-                      <item.icon
-                        aria-hidden="true"
-                        className="size-6 text-main group-hover:text-indigo-600 dark:text-gray-400 dark:group-hover:text-white"
-                      />
-                    </div>
-                    <div className="flex-auto">
-                      <Link href={item.href} className="block font-semibold text-main dark:text-white">
-                        {item.name}
-                        <span className="absolute inset-0" />
+        {/* Desktop Navigation Links */}
+        <PopoverGroup className="hidden lg:flex lg:items-center lg:gap-x-8">
+          
+          {/* Products Mega Dropdown */}
+          <Popover className="relative">
+            {({ open }) => (
+              <>
+                <PopoverButton 
+                  className={`flex items-center gap-x-1.5 text-sm font-semibold transition-colors py-2 focus:outline-none cursor-pointer ${
+                    open ? 'text-emerald-600 dark:text-emerald-400' : 'text-slate-700 dark:text-slate-200 hover:text-emerald-600 dark:hover:text-emerald-400'
+                  }`}
+                >
+                  <BuildingStorefrontIcon className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
+                  <span>Products</span>
+                  <ChevronDownIcon aria-hidden="true" className={`h-4 w-4 transition-transform duration-200 ${open ? 'rotate-180 text-emerald-600' : 'text-slate-400'}`} />
+                </PopoverButton>
+
+                <PopoverPanel
+                  transition
+                  className="absolute left-1/2 z-20 mt-3 w-screen max-w-md -translate-x-1/2 overflow-hidden rounded-2xl bg-white dark:bg-slate-900 p-3 shadow-xl ring-1 ring-slate-900/5 dark:ring-white/10 transition data-closed:translate-y-2 data-closed:opacity-0 data-enter:duration-200 data-leave:duration-150"
+                >
+                  <div className="space-y-1">
+                    {categoryProducts.map((item) => (
+                      <Link
+                        key={item.name}
+                        href={item.href}
+                        className="group relative flex items-start gap-x-4 rounded-xl p-3 text-sm transition-all hover:bg-emerald-50/70 dark:hover:bg-slate-800/80"
+                      >
+                        <div className="mt-1 flex h-9 w-9 flex-none items-center justify-center rounded-lg bg-emerald-100/60 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-400 group-hover:bg-emerald-600 group-hover:text-white transition-colors">
+                          <SparklesIcon className="h-5 w-5" aria-hidden="true" />
+                        </div>
+                        <div className="flex-auto">
+                          <div className="flex items-center justify-between font-semibold text-slate-900 dark:text-white">
+                            <span>{item.name}</span>
+                            <span className="text-[10px] font-medium px-2 py-0.5 rounded-full bg-emerald-100 dark:bg-emerald-900/50 text-emerald-800 dark:text-emerald-300">
+                              {item.badge}
+                            </span>
+                          </div>
+                          <p className="mt-0.5 text-xs text-slate-500 dark:text-slate-400">
+                            {item.description}
+                          </p>
+                        </div>
                       </Link>
-                      <p className="mt-1 text-main dark:text-gray-400">{item.description}</p>
-                    </div>
+                    ))}
                   </div>
-                ))}
-              </div>
-              <div className="grid grid-cols-2 divide-x divide-main/5 bg-gray-50 dark:divide-white/10 dark:bg-gray-700/50">
-                {callsToAction.map((item) => (
-                  <Link
-                    key={item.name}
-                    href={item.href}
-                    className="flex items-center justify-center gap-x-2.5 p-3 text-sm/6 font-semibold text-main hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700/50"
-                  >
-                    <item.icon aria-hidden="true" className="size-5 flex-none text-main dark:text-gray-500" />
-                    {item.name}
-                  </Link>
-                ))}
-              </div>
-            </PopoverPanel>
+
+                  <div className="mt-2 border-t border-slate-100 dark:border-slate-800/80 pt-2 px-3 pb-1 flex justify-between items-center text-xs text-slate-500 dark:text-slate-400">
+                    <span>Authentic Unani Healthcare</span>
+                    <Link href="/products/Tablets" className="font-semibold text-emerald-600 dark:text-emerald-400 hover:underline">
+                      Explore All &rarr;
+                    </Link>
+                  </div>
+                </PopoverPanel>
+              </>
+            )}
           </Popover>
 
-          <Link href="/offer" className="text-sm/6 font-semibold text-main dark:text-white">
-            Offers
+          <Link 
+            href="/offer" 
+            className="flex items-center gap-1.5 text-sm font-semibold text-slate-700 dark:text-slate-200 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors py-2"
+          >
+            <TagIcon className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
+            <span>Offers</span>
           </Link>
-          <Link href="/blog" className="text-sm/6 font-semibold text-main dark:text-white">
-            Blog
+
+          <Link 
+            href="/blog" 
+            className="flex items-center gap-1.5 text-sm font-semibold text-slate-700 dark:text-slate-200 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors py-2"
+          >
+            <NewspaperIcon className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
+            <span>Blog</span>
           </Link>
-          <Link href="/about" className="text-sm/6 font-semibold text-main dark:text-white">
-            About Us
+
+          <Link 
+            href="/about" 
+            className="flex items-center gap-1.5 text-sm font-semibold text-slate-700 dark:text-slate-200 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors py-2"
+          >
+            <InformationCircleIcon className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
+            <span>About Us</span>
           </Link>
+
         </PopoverGroup>
-        <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-          <Link href="/enquiry" className="text-sm/6 font-semibold text-main dark:text-white border border-main px-3 py-2 rounded-lg hover:bg-[#3b6342] hover:text-white dark:border-white/10 dark:hover:bg-white/5 transform transition duration-300 ease-in-out">
-            Enquiry Now <span aria-hidden="true">&rarr;</span>
+
+        {/* Right CTA + Theme Toggle */}
+        <div className="hidden lg:flex lg:flex-1 lg:justify-end lg:items-center lg:gap-x-4">
+          <ThemeToggle />
+
+          <Link
+            href="/enquiry"
+            className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-700 hover:from-emerald-500 hover:to-teal-600 text-white px-4 py-2.5 text-sm font-semibold shadow-md shadow-emerald-900/10 hover:shadow-lg hover:shadow-emerald-600/20 transition-all duration-300 active:scale-95"
+          >
+            <EnvelopeIcon className="w-4 h-4" />
+            <span>Enquiry Now</span>
           </Link>
         </div>
+
       </nav>
+
+      {/* Mobile Drawer Menu */}
       <Dialog open={mobileMenuOpen} onClose={setMobileMenuOpen} className="lg:hidden">
-        <div className="fixed inset-0 z-50" />
-        <DialogPanel className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white p-6 sm:max-w-sm sm:ring-1 sm:ring-main/10 dark:bg-gray-900 dark:sm:ring-gray-100/10">
-          <div className="flex items-center justify-between">
-            <Link href="/" className="-m-1.5 p-1.5">
-              <span className="sr-only">Your Company</span>
-              <img
-                alt=""
-                src="/logo/logo.png"
-                className="h-8 w-auto dark:hidden "
-              />
-              <img
-                alt=""
-                src="/logo/logo.png"
-                className="h-8 w-auto not-dark:hidden"
-              />
-            </Link>
-            <button
-              type="button"
-              onClick={() => setMobileMenuOpen(false)}
-              className="-m-2.5 rounded-md p-2.5 text-gray-700 dark:text-gray-400"
-            >
-              <span className="sr-only">Close menu</span>
-              <XMarkIcon aria-hidden="true" className="size-6" />
-            </button>
-          </div>
-          <div className="mt-6 flow-root">
-            <div className="-my-6 divide-y divide-gray-500/10 dark:divide-white/10">
-              <div className="space-y-2 py-6">
-                <Disclosure as="div" className="-mx-3">
-                  <DisclosureButton className="group flex w-full items-center justify-between rounded-lg py-2 pr-3.5 pl-3 text-base/7 font-semibold text-main hover:bg-gray-50 dark:text-white dark:hover:bg-white/5">
-                    Product
-                    <ChevronDownIcon aria-hidden="true" className="size-5 flex-none group-data-open:rotate-180" />
-                  </DisclosureButton>
-                  <DisclosurePanel className="mt-2 space-y-2">
-                    {[...products, ...callsToAction].map((item) => (
-                      <DisclosureButton
-                        key={item.name}
-                        as="a"
-                        href={item.href}
-                        className="block rounded-lg py-2 pr-3 pl-6 text-sm/7 font-semibold text-main hover:bg-gray-50 dark:text-white dark:hover:bg-white/5"
-                      >
-                        {item.name}
-                      </DisclosureButton>
-                    ))}
-                  </DisclosurePanel>
-                </Disclosure>
-                <Link
-                  href="/offer"
-                  className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-main hover:bg-gray-50 dark:text-white dark:hover:bg-white/5"
-                >
-                  Offers
-                </Link>
-                <Link
-                  href="/blog"
-                  className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-main hover:bg-gray-50 dark:text-white dark:hover:bg-white/5"
-                >
-                  Blog
-                </Link>
-                <Link
-                  href="/about"
-                  className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-main hover:bg-gray-50 dark:text-white dark:hover:bg-white/5"
-                >
-                  About Us
-                </Link>
-              </div>
-              <div className="py-6">
-                <Link
-                  href="/enquiry"
-                  className="-mx-3 block rounded-lg px-3 py-2.5 text-base/7 font-semibold text-main hover:bg-gray-50 dark:text-white dark:hover:bg-white/5  border border-main px-3 py-2 rounded-lg hover:bg-main transform transition duration-300 ease-in-out"
-                >
-                  Enquiry Now
-                </Link>
-              </div>
+        <div className="fixed inset-0 z-50 bg-slate-900/40 backdrop-blur-sm transition-opacity" />
+
+        <DialogPanel className="fixed inset-y-0 right-0 z-50 w-full max-w-xs overflow-y-auto bg-white dark:bg-slate-900 p-6 shadow-2xl ring-1 ring-slate-900/10 dark:ring-white/10 flex flex-col justify-between">
+          <div>
+            <div className="flex items-center justify-between pb-4 border-b border-slate-100 dark:border-slate-800">
+              <Link href="/" onClick={() => setMobileMenuOpen(false)} className="flex items-center gap-2">
+                <img
+                  alt="AH Pharmacy"
+                  src="/logo/logo_desk.png"
+                  className="h-8 w-auto"
+                />
+                <span className="font-bold text-slate-900 dark:text-white text-base">AH Pharmacy</span>
+              </Link>
+
+              <button
+                type="button"
+                onClick={() => setMobileMenuOpen(false)}
+                className="rounded-xl p-2 text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800"
+              >
+                <span className="sr-only">Close menu</span>
+                <XMarkIcon aria-hidden="true" className="h-6 w-6" />
+              </button>
             </div>
+
+            <div className="mt-6 space-y-2">
+              <Disclosure as="div" className="border-b border-slate-100 dark:border-slate-800/60 pb-2">
+                {({ open }) => (
+                  <>
+                    <DisclosureButton className="flex w-full items-center justify-between rounded-xl py-2.5 px-3 text-base font-semibold text-slate-800 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-800/60">
+                      <span>Products</span>
+                      <ChevronDownIcon aria-hidden="true" className={`h-5 w-5 transition-transform ${open ? 'rotate-180 text-emerald-600' : ''}`} />
+                    </DisclosureButton>
+                    <DisclosurePanel className="mt-1 space-y-1 pl-4">
+                      {categoryProducts.map((item) => (
+                        <Link
+                          key={item.name}
+                          href={item.href}
+                          onClick={() => setMobileMenuOpen(false)}
+                          className="block rounded-lg py-2 px-3 text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-emerald-50/50 dark:hover:bg-slate-800/40"
+                        >
+                          {item.name}
+                        </Link>
+                      ))}
+                    </DisclosurePanel>
+                  </>
+                )}
+              </Disclosure>
+
+              <Link
+                href="/offer"
+                onClick={() => setMobileMenuOpen(false)}
+                className="block rounded-xl py-2.5 px-3 text-base font-semibold text-slate-800 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-800/60"
+              >
+                Offers
+              </Link>
+
+              <Link
+                href="/blog"
+                onClick={() => setMobileMenuOpen(false)}
+                className="block rounded-xl py-2.5 px-3 text-base font-semibold text-slate-800 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-800/60"
+              >
+                Blog
+              </Link>
+
+              <Link
+                href="/about"
+                onClick={() => setMobileMenuOpen(false)}
+                className="block rounded-xl py-2.5 px-3 text-base font-semibold text-slate-800 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-800/60"
+              >
+                About Us
+              </Link>
+            </div>
+          </div>
+
+          <div className="pt-6 border-t border-slate-100 dark:border-slate-800 space-y-3">
+            <Link
+              href="/enquiry"
+              onClick={() => setMobileMenuOpen(false)}
+              className="flex w-full items-center justify-center gap-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white py-3 text-center text-sm font-semibold shadow-md"
+            >
+              <EnvelopeIcon className="w-4 h-4" />
+              <span>Send Enquiry</span>
+            </Link>
           </div>
         </DialogPanel>
       </Dialog>
     </header>
-  )
+  );
 }
